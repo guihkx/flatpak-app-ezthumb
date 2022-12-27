@@ -1,0 +1,74 @@
+app-id: io.sourceforge.xuming.ezthumb
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: ezthumb
+
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --filesystem=xdg-videos
+  - --persist=.config/ezthumb
+
+cleanup:
+  - /include
+  - /lib/libgd.la
+
+modules:
+  - name: ffmpeg
+    buildsystem: autotools
+    config-opts:
+      - --enable-gpl
+      - --enable-pic
+      - --enable-shared
+      - --disable-static
+      - --disable-doc
+      - --disable-programs
+      - --disable-avdevice
+      - --disable-swresample
+      - --disable-swscale
+      - --disable-postproc
+      - --disable-avfilter
+      - --disable-network
+    sources:
+      - type: archive
+        url: https://ffmpeg.org/releases/ffmpeg-4.4.3.tar.xz
+        sha256: 6c5b6c195e61534766a0b5fe16acc919170c883362612816d0a1c7f4f947006e
+    cleanup:
+      - /lib/pkgconfig
+      - /share/ffmpeg
+
+  - shared-modules/gtk2/gtk2.json
+
+  - name: libgd
+    buildsystem: autotools
+    config-opts:
+      - --disable-static
+    sources:
+      - type: archive
+        url: https://github.com/libgd/libgd/releases/download/gd-2.3.3/libgd-2.3.3.tar.xz
+        sha256: 3fe822ece20796060af63b7c60acb151e5844204d289da0ce08f8fdf131e5a61
+    cleanup:
+      - /bin
+      - /lib/pkgconfig
+
+  - name: ezthumb
+    buildsystem: simple
+    build-commands:
+      - ./configure --prefix=/app --with-gui=gtk2
+      - make EXTRAINCS="$(pkg-config --cflags glib-2.0 gtk+-2.0 harfbuzz)"
+      - make install
+    post-install:
+      - desktop-file-edit --add-category AudioVideo ezthumb.desktop
+      - desktop-file-edit --set-icon $FLATPAK_ID ezthumb.desktop
+      - install -Dm644 external/icons/ezthumb128.png /app/share/icons/hicolor/128x128/apps/$FLATPAK_ID.png
+      - install -Dm644 external/icons/SMirC-thumbsup.svg /app/share/icons/hicolor/scalable/apps/$FLATPAK_ID.svg
+      - install -Dm644 ezthumb.desktop /app/share/applications/$FLATPAK_ID.desktop
+      - install -Dm644 ezthumb.1 /app/share/man/man1/ezthumb.1
+      - install -Dm644 -t /app/share/metainfo io.sourceforge.xuming.ezthumb.metainfo.xml
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/project/ezthumb/ezthumb-3.6.7.tar.bz2
+        sha256: 1d04a1521204b25454b8a2cedf4150df9c3c7d68059ed5742d03f7a30060674e
+      - type: file
+        path: io.sourceforge.xuming.ezthumb.metainfo.xml

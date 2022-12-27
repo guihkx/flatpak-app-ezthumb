@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 Andy Xuming -->
+<component type="desktop-application">
+  <id>io.sourceforge.xuming.ezthumb</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>Ezthumb</name>
+  <developer_name>Andy Xuming</developer_name>
+  <update_contact>xuming@users.sourceforge.net</update_contact>
+  <summary>A video thumbnail generator based on FFMPEG</summary>
+  <description>
+    <p>
+      Ezthumb is a powerful open source program to generate thumbnails (i.e. contact sheets, screenshots or previews) from videos.
+    </p>
+    <p>
+      It uses powerful libraries from ffmpeg, therefore supporting the most various video codecs. Here is some of the popular video formats Ezthumb supports: AVI, FLV, OGG, MOV, MKV, MP4 (H.264/x264, HEVC/H.265/x265), WebM, WMV.
+    </p>
+    <p>
+      Its interface is based on IUP, a multi-platform toolkit for building graphical user interfaces, so it looks nice and even on both GNU/Linux and Windows.
+    </p>
+    <p>
+      It supports many image output formats to generate thumbnails: GIF (supports transparency), Animated GIF, JPEG and PNG (supports transparency).
+    </p>
+  </description>
+  <launchable type="desktop-id">io.sourceforge.xuming.ezthumb.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://a.fsdn.com/con/app/proj/ezthumb/screenshots/ezthumb_screenshot_main.png/max/max/1</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://ezthumb.sourceforge.io/</url>
+  <url type="bugtracker">https://sourceforge.net/p/ezthumb/tickets/</url>
+  <content_rating type="oars-1.0"/>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release date="2017-06-02" version="3.6.7"/>
+  </releases>
+  <provides>
+    <binary>ezthumb</binary>
+  </provides>
+</component>

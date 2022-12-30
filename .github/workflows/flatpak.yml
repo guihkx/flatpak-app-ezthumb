@@ -84,7 +84,6 @@ jobs:
           path: ~/.local/share/flatpak
           restore-keys: |
             flatpak-tools-${{ matrix.arch }}
-            
 
       - name: Install or update Flatpak build tools
         run: |
@@ -243,11 +242,6 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifactErrorsFailBuild: false
+          artifactErrorsFailBuild: true
           artifacts: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.flatpak'
           body: '${{ steps.name.outputs.value }} ${{ steps.version.outputs.value }}'
-          omitBodyDuringUpdate: true
-          omitPrereleaseDuringUpdate: false
-          # Because aarch64 builds take much longer to complete than x86_64 builds, by the time they're finished
-          # we can remove the 'Pre-release' state, because the x86_64 build will most likely be ready as well.
-          prerelease: ${{ matrix.arch == 'x86_64' }}

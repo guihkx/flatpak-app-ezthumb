@@ -49,7 +49,7 @@ jobs:
           shopt -s nocaseglob
           for manifest in *.json *.yml *.yaml
           do
-            id=$(yq eval '.app-id // ""' "${manifest}")
+            id=$(yq eval '.app-id // .id // ""' "${manifest}")
             if [ -n "${id}" ]
             then
               branch=$(yq eval '.branch // "master"' "${manifest}")

@@ -235,6 +235,22 @@ jobs:
             name='my_flatpak_app'
           fi
 
+      # TODO: Remove this step once flatpak-builder's --finish-only cleans up correctly:
+      # https://github.com/flatpak/flatpak-builder/issues/14
+      - name: (WORKAROUND) Rebuild (${{ matrix.arch }})
+        run: |
+          dbus-run-session flatpak run org.flatpak.Builder \
+            --arch ${{ matrix.arch }} \
+            --delete-build-dirs \
+            --force-clean \
+            --install-deps-from flathub \
+            --sandbox \
+            --user \
+            --repo repo/ \
+            --verbose \
+            builddir/ \
+            '${{ steps.details.outputs.manifest }}'
+
       - name: Bundle (${{ matrix.arch }})
         run: |
           flatpak build-bundle \

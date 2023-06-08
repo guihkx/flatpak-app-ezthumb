@@ -112,6 +112,11 @@ jobs:
             org.flatpak.Builder \
             --exceptions '${{ steps.details.outputs.manifest }}'
 
+      - name: Validate flatpak-external-data-checker settings
+        run: |
+          flatpak run org.flathub.flatpak-external-data-checker \
+            '${{ steps.details.outputs.manifest }}'
+
       - name: Set up QEMU
         if: matrix.arch != 'x86_64'
         uses: docker/setup-qemu-action@v2

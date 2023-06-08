@@ -197,7 +197,7 @@ jobs:
             --env=G_DEBUG=fatal-criticals \
             --command=appstream-util \
             org.flatpak.Builder validate \
-            builddir/*/share/appdata/'${{ steps.details.outputs.app_id }}.appdata.xml'
+            builddir/*/share/metainfo/'${{ steps.details.outputs.app_id }}.metainfo.xml'
 
       - name: Check for 128x128 icon
         run: |

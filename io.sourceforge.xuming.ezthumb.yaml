@@ -65,7 +65,7 @@ modules:
       - install -Dm644 external/icons/SMirC-thumbsup.svg /app/share/icons/hicolor/scalable/apps/$FLATPAK_ID.svg
       - install -Dm644 ezthumb.desktop /app/share/applications/$FLATPAK_ID.desktop
       - install -Dm644 ezthumb.1 /app/share/man/man1/ezthumb.1
-      - install -Dm644 -t /app/share/metainfo io.sourceforge.xuming.ezthumb.metainfo.xml
+      - install -Dm644 -t /app/share/metainfo $FLATPAK_ID.metainfo.xml
     sources:
       - type: archive
         url: https://downloads.sourceforge.net/project/ezthumb/ezthumb-3.6.7.tar.bz2

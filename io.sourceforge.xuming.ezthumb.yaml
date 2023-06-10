@@ -32,8 +32,13 @@ modules:
       - --disable-network
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.4.3.tar.xz
-        sha256: 6c5b6c195e61534766a0b5fe16acc919170c883362612816d0a1c7f4f947006e
+        url: https://ffmpeg.org/releases/ffmpeg-4.4.4.tar.xz
+        sha256: e80b380d595c809060f66f96a5d849511ef4a76a26b76eacf5778b94c3570309
+        x-checker-data:
+          type: html
+          url: https://ffmpeg.org/releases/?C=M;O=D
+          version-pattern: ffmpeg-(4\.4\.\d+)\.tar\.xz
+          url-template: https://ffmpeg.org/releases/ffmpeg-$version.tar.xz
     cleanup:
       - /lib/pkgconfig
       - /share/ffmpeg

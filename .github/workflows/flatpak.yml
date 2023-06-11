@@ -251,7 +251,7 @@ jobs:
             builddir/ \
             '${{ steps.details.outputs.manifest }}'
 
-      - name: Bundle (${{ matrix.arch }})
+      - name: Bundle app (${{ matrix.arch }})
         run: |
           flatpak build-bundle \
             --arch ${{ matrix.arch }} repo/ \
@@ -259,11 +259,26 @@ jobs:
             '${{ steps.details.outputs.app_id }}' \
             '${{ steps.details.outputs.branch }}'
 
-      - name: Upload (${{ matrix.arch }})
+      - name: Upload app (${{ matrix.arch }})
         uses: actions/upload-artifact@v3
         with:
           path: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.flatpak'
           name: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}'
+
+      - name: Bundle debug symbols (${{ matrix.arch }})
+        run: |
+          flatpak build-bundle \
+            --arch ${{ matrix.arch }} repo/ \
+            --runtime \
+            '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.Debug.flatpak' \
+            '${{ steps.details.outputs.app_id }}.Debug' \
+            '${{ steps.details.outputs.branch }}'
+
+      - name: Upload debug symbols (${{ matrix.arch }})
+        uses: actions/upload-artifact@v3
+        with:
+          path: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.Debug.flatpak'
+          name: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.Debug'
 
   publish-release:
     name: Publish Release

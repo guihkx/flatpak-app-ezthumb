@@ -202,6 +202,11 @@ jobs:
       - name: Check for AppStream xml
         run: stat builddir/*/share/app-info/xmls/'${{ steps.details.outputs.app_id }}.xml.gz'
 
+      - name: Check for right id in AppStream xml
+        run: |
+          zgrep '<id>${{ steps.details.outputs.app_id }}\(\.\w\+\)*\(.desktop\)\?</id>' \
+            builddir/*/share/app-info/xmls/'${{ steps.details.outputs.app_id }}.xml.gz'
+
       - name: AppStream validation
         run: |
           flatpak run \

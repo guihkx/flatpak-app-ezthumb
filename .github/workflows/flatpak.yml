@@ -152,6 +152,9 @@ jobs:
           key: flatpak-build-dir-${{ matrix.arch }}-${{ github.run_id }}
           path: .flatpak-builder
 
+      - name: Recursively list files in builddir
+        run: tree -fhv builddir
+
       - name: Update AppStream release version
         id: version
         run: |
@@ -254,6 +257,9 @@ jobs:
             --verbose \
             builddir/ \
             '${{ steps.details.outputs.manifest }}'
+
+      - name: Recursively list files in builddir
+        run: tree -I debug/ -fhv builddir
 
       - name: Bundle app (${{ matrix.arch }})
         run: |

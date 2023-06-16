@@ -49,10 +49,10 @@ jobs:
           shopt -s nocaseglob
           for manifest in *.json *.yml *.yaml
           do
-            id=$(yq eval '.app-id // .id // ""' "${manifest}")
+            id=$(yq eval -oy '.app-id // .id // ""' "${manifest}")
             if [ -n "${id}" ]
             then
-              branch=$(yq eval '.branch // "master"' "${manifest}")
+              branch=$(yq eval -oy '.branch // "master"' "${manifest}")
               echo "app_id=${id}" >> "${GITHUB_OUTPUT}"
               echo "manifest=${manifest}" >> "${GITHUB_OUTPUT}"
               echo "branch=${branch}" >> "${GITHUB_OUTPUT}"

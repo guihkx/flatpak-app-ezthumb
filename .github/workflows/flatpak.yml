@@ -157,8 +157,14 @@ jobs:
         run: |
           set -e
           set -x
-          for appdata in builddir/files/share/metainfo/'${{ steps.details.outputs.app_id }}'.*.xml
+          for appdata in builddir/*/share/appdata/'${{ steps.details.outputs.app_id }}'.appdata.xml \
+                         builddir/*/share/metainfo/'${{ steps.details.outputs.app_id }}'.metainfo.xml
           do
+            if [ ! -f "${appdata}" ]
+            then
+              echo "AppStream xml in '${appdata}' does not exist or is not readable. Ignoring."
+              continue
+            fi
             version=$(xmlstarlet select \
               --template \
               --value-of '/component/releases/release[1]/@version' \

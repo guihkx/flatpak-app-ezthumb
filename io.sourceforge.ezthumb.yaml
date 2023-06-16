@@ -43,8 +43,6 @@ modules:
       - /lib/pkgconfig
       - /share/ffmpeg
 
-  - shared-modules/gtk2/gtk2.json
-
   - name: libgd
     buildsystem: autotools
     config-opts:
@@ -63,12 +61,27 @@ modules:
       - /bin
       - /lib/pkgconfig
 
-  - name: ezthumb
-    buildsystem: simple
+  - name: iup
+    no-autogen: true
+    make-args:
+      - -j1
+      - NO_STATIC=Yes
+      - EXTRAINCS=-I/usr/lib/aarch64-linux-gnu/glib-2.0/include # fixes aarch64 build regard missing glibconfig.h
+      - iup
+      - iupimglib
     build-commands:
-      - ./configure --prefix=/app --with-gui=gtk2
-      - make EXTRAINCS="$(pkg-config --cflags glib-2.0 gtk+-2.0 harfbuzz)"
-      - make install
+      - install -Dm0755 lib/Linux*/libiup*.so -t /app/lib
+      - install -Dm0644 include/*.{h,hpp} -t /app/include/iup
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/project/iup/3.32/Docs%20and%20Sources/iup-3.32_Sources.tar.gz
+        sha256: 871e17fca0fb04d0a13b68d2fdb9883596337826ea44c9254ca38e3eabb6a6a5
+        x-checker-data:
+          type: anitya
+          project-id: 385498
+          url-template: https://downloads.sourceforge.net/project/iup/$version/Docs%20and%20Sources/iup-${version}_Sources.tar.gz
+
+  - name: ezthumb
     post-install:
       - desktop-file-edit --add-category AudioVideo ezthumb.desktop
       - desktop-file-edit --set-icon $FLATPAK_ID ezthumb.desktop

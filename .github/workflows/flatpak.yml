@@ -132,7 +132,7 @@ jobs:
       - name: Restore Flatpak build directory from cache
         uses: actions/cache/restore@v4
         with:
-          key: flatpak-build-dir-${{ matrix.arch }}-${{ github.run_id }}
+          key: flatpak-build-dir-gtk3-${{ matrix.arch }}-${{ github.run_id }}
           path: .flatpak-builder
           restore-keys: |
             flatpak-build-dir-${{ matrix.arch }}
@@ -155,7 +155,7 @@ jobs:
         if: ${{ always() }}
         uses: actions/cache/save@v4
         with:
-          key: flatpak-build-dir-${{ matrix.arch }}-${{ github.run_id }}
+          key: flatpak-build-dir-gtk3-${{ matrix.arch }}-${{ github.run_id }}
           path: .flatpak-builder
 
       - name: Recursively list files in builddir

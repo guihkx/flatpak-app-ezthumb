@@ -301,3 +301,4 @@ jobs:
           allowUpdates: true
           artifactErrorsFailBuild: true
           artifacts: artifacts/*/*
+          omitBodyDuringUpdate: true

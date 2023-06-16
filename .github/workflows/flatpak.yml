@@ -214,26 +214,19 @@ jobs:
         id: name
         run: |
           set -x
-          for appdata in builddir/files/share/metainfo/'${{ steps.details.outputs.app_id }}'.*.xml
-          do
-            name=$(xmlstarlet select \
-              --template \
-              --value-of '/component/name' \
-              "${appdata}" |
-              tr '[:upper:]' '[:lower:]' |
-              tr '[:blank:]' '_'
-            )
-            if [ -n "${name}" ]
-            then
-              echo "value=${name}" >> "${GITHUB_OUTPUT}"
-              break
-            fi
-          done
+          name=$(xmlstarlet select \
+            --template \
+            --value-of '/component/name' \
+            builddir/*/share/appdata/'${{ steps.details.outputs.app_id }}.appdata.xml' |
+            tr '[:upper:]' '[:lower:]' |
+            tr '[:blank:]' '_'
+          )
           if [ -z "${name}" ]
           then
             echo 'Failed to extract the name of the app, will use "my_flatpak_app" instead.'
             name='my_flatpak_app'
           fi
+          echo "value=${name}" >> "${GITHUB_OUTPUT}"
 
       # TODO: Remove this step once flatpak-builder's --finish-only cleans up correctly:
       # https://github.com/flatpak/flatpak-builder/issues/14

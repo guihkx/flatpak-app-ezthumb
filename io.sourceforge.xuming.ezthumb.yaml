@@ -43,8 +43,6 @@ modules:
       - /lib/pkgconfig
       - /share/ffmpeg
 
-  - shared-modules/gtk2/gtk2.json
-
   - name: libgd
     buildsystem: autotools
     config-opts:
@@ -65,8 +63,8 @@ modules:
   - name: ezthumb
     buildsystem: simple
     build-commands:
-      - ./configure --prefix=/app --with-gui=gtk2
-      - make EXTRAINCS="$(pkg-config --cflags glib-2.0 gtk+-2.0 harfbuzz)"
+      - ./configure --prefix=/app --with-gui=gtk3
+      - make EXTRAINCS="$(pkg-config --cflags glib-2.0 gtk+-3.0 harfbuzz)"
       - make install
     post-install:
       - desktop-file-edit --add-category AudioVideo ezthumb.desktop

@@ -207,7 +207,7 @@ jobs:
           zgrep '<id>${{ steps.details.outputs.app_id }}\(\.\w\+\)*\(.desktop\)\?</id>' \
             builddir/*/share/app-info/xmls/'${{ steps.details.outputs.app_id }}.xml.gz'
 
-      - name: AppStream validation
+      - name: Validate AppData file
         run: |
           flatpak run \
             --env=G_DEBUG=fatal-criticals \

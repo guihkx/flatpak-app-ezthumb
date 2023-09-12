@@ -276,6 +276,21 @@ jobs:
           path: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.flatpak'
           name: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}'
 
+      - name: Bundle locale files (${{ matrix.arch }})
+        run: |
+          flatpak build-bundle \
+            --arch ${{ matrix.arch }} repo/ \
+            --runtime \
+            '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.Locale.flatpak' \
+            '${{ steps.details.outputs.app_id }}.Locale' \
+            '${{ steps.details.outputs.branch }}'
+
+      - name: Upload locale files (${{ matrix.arch }})
+        uses: actions/upload-artifact@v3
+        with:
+          path: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.Locale.flatpak'
+          name: '${{ steps.name.outputs.value }}_${{ steps.version.outputs.value }}-${{ matrix.arch }}.Locale'
+
       - name: Bundle debug symbols (${{ matrix.arch }})
         run: |
           flatpak build-bundle \

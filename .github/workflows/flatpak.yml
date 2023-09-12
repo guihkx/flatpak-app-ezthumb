@@ -52,7 +52,7 @@ jobs:
             id=$(yq -e -o yaml '.app-id // .id // ""' "${manifest}")
             if [ -n "${id}" ]
             then
-              branch=$(yq -e -o yaml '.branch // "master"' "${manifest}")
+              branch=$(yq -e -o yaml '.branch // .default-branch // "master"' "${manifest}")
               echo "app_id=${id}" >> "${GITHUB_OUTPUT}"
               echo "manifest=${manifest}" >> "${GITHUB_OUTPUT}"
               echo "branch=${branch}" >> "${GITHUB_OUTPUT}"

@@ -231,7 +231,7 @@ jobs:
           set -x
           name=$(xmlstarlet select \
             --template \
-            --value-of '/component/name' \
+            --value-of '/component/name[not(@xml:lang)]' \
             builddir/*/share/appdata/'${{ steps.details.outputs.app_id }}.appdata.xml' |
             tr '[:upper:]' '[:lower:]' |
             tr '[:blank:]' '_'

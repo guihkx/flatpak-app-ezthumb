@@ -1,6 +1,6 @@
 app-id: io.sourceforge.xuming.ezthumb
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 command: ezthumb
 
@@ -39,6 +39,8 @@ modules:
           url: https://ffmpeg.org/releases/?C=M;O=D
           version-pattern: ffmpeg-(4\.4\.\d+)\.tar\.xz
           url-template: https://ffmpeg.org/releases/ffmpeg-$version.tar.xz
+      - type: patch
+        path: patches/clip-constants-used-with-shift.patch
     cleanup:
       - /lib/pkgconfig
       - /share/ffmpeg

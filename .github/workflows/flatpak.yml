@@ -161,6 +161,7 @@ jobs:
           set -e
           set -x
           for appdata in builddir/*/share/appdata/'${{ steps.details.outputs.app_id }}'.appdata.xml \
+                         builddir/*/share/metainfo/'${{ steps.details.outputs.app_id }}'.appdata.xml \
                          builddir/*/share/metainfo/'${{ steps.details.outputs.app_id }}'.metainfo.xml
           do
             if [ ! -f "${appdata}" ]

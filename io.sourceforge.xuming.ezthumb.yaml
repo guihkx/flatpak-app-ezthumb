@@ -57,7 +57,7 @@ modules:
           type: json
           url: https://api.github.com/repos/libgd/libgd/releases/latest
           version-query: .tag_name | sub("^gd-"; "")
-          url-query: .assets[] | select(.name == "libgd-" + $version + ".tar.xz") | .browser_download_url
+          url-query: .assets[] | select(.name == "libgd-\($version).tar.xz") | .browser_download_url
     cleanup:
       - /bin
       - /lib/pkgconfig

@@ -110,7 +110,7 @@ jobs:
         run: |
           flatpak run --command=flatpak-builder-lint \
             org.flatpak.Builder \
-            --exceptions '${{ steps.details.outputs.manifest }}'
+            --exceptions manifest '${{ steps.details.outputs.manifest }}'
 
       - name: Validate flatpak-external-data-checker settings
         run: |

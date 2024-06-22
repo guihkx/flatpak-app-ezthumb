@@ -31,7 +31,6 @@
   </screenshots>
   <url type="homepage">https://ezthumb.sourceforge.io/</url>
   <url type="bugtracker">https://sourceforge.net/p/ezthumb/tickets/</url>
-  <content_rating type="oars-1.0"/>
   <content_rating type="oars-1.1"/>
   <releases>
     <release date="2017-06-02" version="3.6.7"/>

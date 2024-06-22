@@ -7,7 +7,7 @@
   <name>Ezthumb</name>
   <developer_name>Andy Xuming</developer_name>
   <update_contact>xuming@users.sourceforge.net</update_contact>
-  <summary>A video thumbnail generator based on FFMPEG</summary>
+  <summary>A video thumbnail generator</summary>
   <description>
     <p>
       Ezthumb is a powerful open source program to generate thumbnails (i.e. contact sheets, screenshots or previews) from videos.

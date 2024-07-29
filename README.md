@@ -29,7 +29,7 @@ By default, Ezthumb will only be able to access your `~/Videos` folder.
 If you want to give Ezthumb access to specific folders, you can run the following command:
 
 ```bash
-flatpak --user override --filesystem=/media/Movies io.sourceforge.xuming.ezthumb
+flatpak --user override --filesystem=/media/Movies io.sourceforge.ezthumb
 ```
 
 That will allow Ezthumb access to the `/media/Movies` folder. More examples [here](https://docs.flatpak.org/en/latest/sandbox-permissions.html#filesystem-access).
@@ -44,9 +44,9 @@ Before proceding, make sure both `flatpak` and `flatpak-builder` packages are in
 
 ```bash
 # Build
-flatpak-builder --arch x86_64 --delete-build-dirs --force-clean --install-deps-from flathub --repo repo/ --sandbox builddir/ io.sourceforge.xuming.ezthumb.yaml
+flatpak-builder --arch x86_64 --delete-build-dirs --force-clean --install-deps-from flathub --repo repo/ --sandbox builddir/ io.sourceforge.ezthumb.yaml
 # Create a single-bundle file
-flatpak build-bundle --arch x86_64 repo/ ezthumb-x86_64.flatpak io.sourceforge.xuming.ezthumb master
+flatpak build-bundle --arch x86_64 repo/ ezthumb-x86_64.flatpak io.sourceforge.ezthumb master
 # Install it
 flatpak install ezthumb-x86_64.flatpak
 ```
@@ -55,9 +55,9 @@ flatpak install ezthumb-x86_64.flatpak
 
 ```bash
 # Build
-flatpak-builder --arch aarch64 --delete-build-dirs --force-clean --install-deps-from flathub --repo repo/ --sandbox builddir/ io.sourceforge.xuming.ezthumb.yaml
+flatpak-builder --arch aarch64 --delete-build-dirs --force-clean --install-deps-from flathub --repo repo/ --sandbox builddir/ io.sourceforge.ezthumb.yaml
 # Create a single-bundle file
-flatpak build-bundle --arch aarch64 repo/ ezthumb-aarch64.flatpak io.sourceforge.xuming.ezthumb master
+flatpak build-bundle --arch aarch64 repo/ ezthumb-aarch64.flatpak io.sourceforge.ezthumb master
 # Install it
 flatpak install ezthumb-aarch64.flatpak
 ```

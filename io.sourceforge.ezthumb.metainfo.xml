@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2022 Andy Xuming -->
 <component type="desktop-application">
-  <id>io.sourceforge.xuming.ezthumb</id>
+  <id>io.sourceforge.ezthumb</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>Ezthumb</name>
@@ -22,7 +22,7 @@
       It supports many image output formats to generate thumbnails: GIF (supports transparency), Animated GIF, JPEG and PNG (supports transparency).
     </p>
   </description>
-  <launchable type="desktop-id">io.sourceforge.xuming.ezthumb.desktop</launchable>
+  <launchable type="desktop-id">io.sourceforge.ezthumb.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://a.fsdn.com/con/app/proj/ezthumb/screenshots/ezthumb_screenshot_main.png/max/max/1</image>

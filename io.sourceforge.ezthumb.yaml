@@ -32,16 +32,14 @@ modules:
       - --disable-network
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.4.4.tar.xz
+        url: https://ffmpeg.org/releases/ffmpeg-4.4.5.tar.xz
         dest-filename: ffmpeg.tar.xz
-        sha256: e80b380d595c809060f66f96a5d849511ef4a76a26b76eacf5778b94c3570309
+        sha256: f9514e0d3515aee5a271283df71636e1d1ff7274b15853bcd84e144be416ab07
         x-checker-data:
           type: html
           url: https://ffmpeg.org/releases/?C=M;O=D
           version-pattern: ffmpeg-(4\.4\.\d+)\.tar\.xz
           url-template: https://ffmpeg.org/releases/ffmpeg-$version.tar.xz
-      - type: patch
-        path: patches/clip-constants-used-with-shift.patch
     cleanup:
       - /lib/pkgconfig
       - /share/ffmpeg

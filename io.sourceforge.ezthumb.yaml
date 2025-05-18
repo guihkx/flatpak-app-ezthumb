@@ -31,9 +31,9 @@ modules:
       - --disable-network
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.4.5.tar.xz
+        url: https://ffmpeg.org/releases/ffmpeg-4.4.6.tar.xz
         dest-filename: ffmpeg.tar.xz
-        sha256: f9514e0d3515aee5a271283df71636e1d1ff7274b15853bcd84e144be416ab07
+        sha256: 2290461f467c08ab801731ed412d8e724a5511d6c33173654bd9c1d2e25d0617
         x-checker-data:
           type: html
           url: https://ffmpeg.org/releases/?C=M;O=D

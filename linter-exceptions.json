@@ -1,0 +1,7 @@
+{
+  "io.sourceforge.ezthumb": {
+    "appstream-external-screenshot-url": "Flathub-specific",
+    "appstream-screenshots-not-mirrored-in-ostree": "Flathub-specific",
+    "finish-args-host-filesystem-access": "GTK2 app, so no support for the file chooser portal"
+  }
+}

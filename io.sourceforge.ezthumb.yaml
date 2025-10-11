@@ -31,14 +31,15 @@ modules:
       - --disable-network
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.4.6.tar.xz
-        dest-filename: ffmpeg.tar.xz
-        sha256: 2290461f467c08ab801731ed412d8e724a5511d6c33173654bd9c1d2e25d0617
+        url: https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n4.4.6.tar.gz
+        dest-filename: ffmpeg.tar.gz
+        sha256: 9cdeaab9ddc0c0ddb63bad319adc977eba8ac946b15d5b4d9635222d8ba27a8b
         x-checker-data:
-          type: html
-          url: https://ffmpeg.org/releases/?C=M;O=D
-          version-pattern: ffmpeg-(4\.4\.\d+)\.tar\.xz
-          url-template: https://ffmpeg.org/releases/ffmpeg-$version.tar.xz
+          type: anitya
+          project-id: 5405
+          versions:
+            <: '5'
+          url-template: https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n$version.tar.gz
     cleanup:
       - /lib/pkgconfig
       - /share/ffmpeg

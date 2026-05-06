@@ -31,9 +31,9 @@ modules:
       - --disable-network
     sources:
       - type: archive
-        url: https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n4.4.6.tar.gz
+        url: https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n4.4.7.tar.gz
         dest-filename: ffmpeg.tar.gz
-        sha256: 9cdeaab9ddc0c0ddb63bad319adc977eba8ac946b15d5b4d9635222d8ba27a8b
+        sha256: 1a4c40c74fffd5955f4058b197f9b4aef6aadf210a576aef86e479ff703da035
         x-checker-data:
           type: anitya
           project-id: 5405
